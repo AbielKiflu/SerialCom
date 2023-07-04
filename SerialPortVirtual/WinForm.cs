@@ -41,7 +41,7 @@ namespace SerialPortVirtual
         {
             
             
-            if (cmbPorts.Text.Count() > 0)
+            if (!string.IsNullOrEmpty(cmbPorts.Text))
             {
                 // get the props of the port
                 using(port = Connection.getPort(cmbPorts.Text))
@@ -50,6 +50,7 @@ namespace SerialPortVirtual
                     txtDataBits.Text = port.DataBits.ToString();
                     txtParity.Text = port.Parity.ToString();
                     txtStopBits.Text = port.StopBits.ToString();
+                  
                 }
 
              
