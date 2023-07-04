@@ -44,14 +44,16 @@ namespace SerialPortVirtual
         {
             string[] ports = await LoadPorts();
             cmbPorts.DataSource = ports;
-            
+
         }
 
 
         //Serial port message received 
-        private void OnMessageReceived(object sender, EventArgs e)
+        private void OnMessageReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            MessageBox.Show("Data rec");
+            SerialPort sp = (SerialPort)sender;
+            string receivedData = sp.ReadExisting();
+            txtReceive.Text=receivedData;
         }
 
 
@@ -67,7 +69,7 @@ namespace SerialPortVirtual
                     txtDataBits.Text = port.DataBits.ToString();
                     txtParity.Text = port.Parity.ToString();
                     txtStopBits.Text = port.StopBits.ToString();
-                    port.DataReceived+= OnMessageReceived;
+                    port.DataReceived += OnMessageReceived;
                 }
             }
         }
@@ -104,9 +106,17 @@ namespace SerialPortVirtual
         {
             using (port = Connection.getPort(cmbPorts.Text))
             {
-                if (!port.IsOpen) port.Open();
+                try
+                {
+                    if (!port.IsOpen) port.Open();
 
-                port.WriteLine(txtMessage.Text);
+
+                    port.WriteLine(txtMessage.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error" + ex.HelpLink + ex.Message.ToString());
+                }
             }
         }
 

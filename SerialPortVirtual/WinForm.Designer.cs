@@ -44,6 +44,8 @@
             btnSendText = new Button();
             txtMessage = new TextBox();
             label6 = new Label();
+            txtReceive = new TextBox();
+            label7 = new Label();
             PnlPort.SuspendLayout();
             SuspendLayout();
             // 
@@ -82,7 +84,7 @@
             PnlPort.Controls.Add(label1);
             PnlPort.Location = new Point(12, 12);
             PnlPort.Name = "PnlPort";
-            PnlPort.Size = new Size(318, 227);
+            PnlPort.Size = new Size(318, 262);
             PnlPort.TabIndex = 2;
             // 
             // btnSavePortConf
@@ -170,7 +172,7 @@
             // 
             // btnSendText
             // 
-            btnSendText.Location = new Point(568, 216);
+            btnSendText.Location = new Point(568, 251);
             btnSendText.Name = "btnSendText";
             btnSendText.Size = new Size(75, 23);
             btnSendText.TabIndex = 5;
@@ -180,7 +182,7 @@
             // 
             // txtMessage
             // 
-            txtMessage.Location = new Point(568, 187);
+            txtMessage.Location = new Point(568, 222);
             txtMessage.Name = "txtMessage";
             txtMessage.Size = new Size(192, 23);
             txtMessage.TabIndex = 6;
@@ -188,17 +190,36 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(568, 169);
+            label6.Location = new Point(568, 204);
             label6.Name = "label6";
             label6.Size = new Size(53, 15);
             label6.TabIndex = 10;
             label6.Text = "Message";
+            // 
+            // txtReceive
+            // 
+            txtReceive.Location = new Point(568, 65);
+            txtReceive.Multiline = true;
+            txtReceive.Name = "txtReceive";
+            txtReceive.Size = new Size(192, 133);
+            txtReceive.TabIndex = 11;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(568, 47);
+            label7.Name = "label7";
+            label7.Size = new Size(103, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Message Received";
             // 
             // WinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 631);
+            Controls.Add(label7);
+            Controls.Add(txtReceive);
             Controls.Add(label6);
             Controls.Add(txtMessage);
             Controls.Add(btnSendText);
@@ -231,5 +252,7 @@
         private Button btnSendText;
         private TextBox txtMessage;
         private Label label6;
+        private TextBox txtReceive;
+        private Label label7;
     }
 }
