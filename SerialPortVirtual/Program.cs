@@ -1,25 +1,16 @@
 ﻿using System.IO.Ports;
+using System.Windows;
 
 namespace SerialPortVirtual
 {
     internal class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
-
-             
-
-            // display list of ports
-            Console.WriteLine(string.Join(", ",SerialPort.GetPortNames()));
-
-            SerialPort conn = Connection.getPort("COM1");
-            conn.Open();
-
-            conn.WriteLine("Hi there");
-    
-
-            conn.Close();
-            Console.ReadKey();
+            FormView formView = new FormView();
+            Application app = new Application();
+            app.Run(formView);
 
         }
     }
