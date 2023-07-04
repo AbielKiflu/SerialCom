@@ -48,6 +48,7 @@
             label7 = new Label();
             txtPortName = new TextBox();
             btnLoad = new Button();
+            btn3D = new Button();
             PnlPort.SuspendLayout();
             SuspendLayout();
             // 
@@ -232,11 +233,22 @@
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
             // 
+            // btn3D
+            // 
+            btn3D.Location = new Point(220, 390);
+            btn3D.Name = "btn3D";
+            btn3D.Size = new Size(110, 23);
+            btn3D.TabIndex = 15;
+            btn3D.Text = "View 3D";
+            btn3D.UseVisualStyleBackColor = true;
+            btn3D.Click += btn3D_Click;
+            // 
             // WinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 631);
+            Controls.Add(btn3D);
             Controls.Add(btnLoad);
             Controls.Add(txtPortName);
             Controls.Add(label7);
@@ -277,5 +289,6 @@
         private Label label7;
         private TextBox txtPortName;
         private Button btnLoad;
+        private Button btn3D;
     }
 }
