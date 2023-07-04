@@ -44,17 +44,17 @@ namespace SerialPortVirtual
         {
             string[] ports = await LoadPorts();
             cmbPorts.DataSource = ports;
-
+ 
         }
 
 
         //Serial port message received 
         private void OnMessageReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            SerialPort sp = (SerialPort)sender;
-            string receivedData = sp.ReadExisting();
-            txtReceive.Text=receivedData;
+            MessageBox.Show("Fired");    
         }
+
+ 
 
 
         //Check if Port config textbox not empty
@@ -69,7 +69,7 @@ namespace SerialPortVirtual
                     txtDataBits.Text = port.DataBits.ToString();
                     txtParity.Text = port.Parity.ToString();
                     txtStopBits.Text = port.StopBits.ToString();
-                    port.DataReceived += OnMessageReceived;
+                    port.DataReceived += new SerialDataReceivedEventHandler(OnMessageReceived);
                 }
             }
         }
@@ -83,13 +83,9 @@ namespace SerialPortVirtual
 
                 try
                 {
-                    if (!port.IsOpen)
-                    {
-                        port.Open();
-                        port.BaudRate = int.Parse(txtBaudRate.Text);
-                        //port.Parity = txtParity.Text;
-
-                    }
+                    port.Open();
+                    port.BaudRate = int.Parse(txtBaudRate.Text);
+                    //port.Parity = txtParity.Text;
                 }
                 catch (Exception ex)
                 {
@@ -104,13 +100,14 @@ namespace SerialPortVirtual
         //Send Text Message
         private void btnSendText_Click(object sender, EventArgs e)
         {
+            //txtPortName.Text.Trim()
             using (port = Connection.getPort(cmbPorts.Text))
             {
                 try
                 {
-                    if (!port.IsOpen) port.Open();
-
-
+                    port.Open();
+                    string receivedData = port.ReadExisting();
+                    txtReceive.Text = receivedData;
                     port.WriteLine(txtMessage.Text);
                 }
                 catch (Exception ex)
@@ -131,6 +128,6 @@ namespace SerialPortVirtual
             string[] ports = await Task.Run(() => SerialPort.GetPortNames());
             return ports;
         }
-
+ 
     }
 }

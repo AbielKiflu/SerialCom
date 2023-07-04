@@ -46,6 +46,8 @@
             label6 = new Label();
             txtReceive = new TextBox();
             label7 = new Label();
+            txtPortName = new TextBox();
+            btnLoad = new Button();
             PnlPort.SuspendLayout();
             SuspendLayout();
             // 
@@ -213,11 +215,30 @@
             label7.TabIndex = 12;
             label7.Text = "Message Received";
             // 
+            // txtPortName
+            // 
+            txtPortName.Location = new Point(327, 330);
+            txtPortName.Name = "txtPortName";
+            txtPortName.Size = new Size(135, 23);
+            txtPortName.TabIndex = 13;
+            // 
+            // btnLoad
+            // 
+            btnLoad.Location = new Point(568, 280);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(75, 23);
+            btnLoad.TabIndex = 14;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
+ 
+            // 
             // WinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 631);
+            Controls.Add(btnLoad);
+            Controls.Add(txtPortName);
             Controls.Add(label7);
             Controls.Add(txtReceive);
             Controls.Add(label6);
@@ -254,5 +275,7 @@
         private Label label6;
         private TextBox txtReceive;
         private Label label7;
+        private TextBox txtPortName;
+        private Button btnLoad;
     }
 }
