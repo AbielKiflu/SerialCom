@@ -193,7 +193,7 @@ namespace SerialPortVirtual
 
             }
 
-            Form3D frm3D= new Form3D();
+            Form3D frm3D = new Form3D();
             frm3D.filePath = filePath;
             frm3D.ShowDialog();
         }

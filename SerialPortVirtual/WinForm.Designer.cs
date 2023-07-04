@@ -46,7 +46,6 @@
             label6 = new Label();
             txtReceive = new TextBox();
             label7 = new Label();
-            txtPortName = new TextBox();
             btnLoad = new Button();
             btn3D = new Button();
             PnlPort.SuspendLayout();
@@ -217,13 +216,6 @@
             label7.TabIndex = 12;
             label7.Text = "Message Received";
             // 
-            // txtPortName
-            // 
-            txtPortName.Location = new Point(327, 330);
-            txtPortName.Name = "txtPortName";
-            txtPortName.Size = new Size(135, 23);
-            txtPortName.TabIndex = 13;
-            // 
             // btnLoad
             // 
             btnLoad.Location = new Point(568, 280);
@@ -250,7 +242,6 @@
             ClientSize = new Size(800, 631);
             Controls.Add(btn3D);
             Controls.Add(btnLoad);
-            Controls.Add(txtPortName);
             Controls.Add(label7);
             Controls.Add(txtReceive);
             Controls.Add(label6);
@@ -287,7 +278,6 @@
         private Label label6;
         private TextBox txtReceive;
         private Label label7;
-        private TextBox txtPortName;
         private Button btnLoad;
         private Button btn3D;
     }
