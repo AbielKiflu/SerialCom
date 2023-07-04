@@ -20,8 +20,17 @@ namespace SerialPortVirtual
 
         private async void WinForm_Load(object sender, EventArgs e)
         {
-            string[] ports = await LoadPorts();
-            cmbPorts.DataSource = ports;
+            try
+            {
+                string[] ports = await LoadPorts();
+                cmbPorts.DataSource = ports;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error while loading ports");
+            }
+
+
         }
 
 
