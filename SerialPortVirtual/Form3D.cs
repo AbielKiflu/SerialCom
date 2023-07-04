@@ -19,7 +19,7 @@ namespace SerialPortVirtual
 
         private void Form3D_Load(object sender, EventArgs e)
         {
-            this.Text = "File " + filePath + "Opened";
+            this.Text = "File " + filePath + " Opened";
         }
     }
 }

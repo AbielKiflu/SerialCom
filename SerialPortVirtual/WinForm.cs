@@ -158,7 +158,7 @@ namespace SerialPortVirtual
                     using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
                     {
                         byte[] buffer = new byte[64];
-                      
+
                         int bytesRead;
                         while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0)
                         {
