@@ -44,17 +44,17 @@ namespace SerialPortVirtual
         {
             string[] ports = await LoadPorts();
             cmbPorts.DataSource = ports;
- 
+
         }
 
 
         //Serial port message received 
         private void OnMessageReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            MessageBox.Show("Fired");    
+            MessageBox.Show("Fired");
         }
 
- 
+
 
 
         //Check if Port config textbox not empty
@@ -128,6 +128,50 @@ namespace SerialPortVirtual
             string[] ports = await Task.Run(() => SerialPort.GetPortNames());
             return ports;
         }
- 
+
+        private void btnLoadStl_Click(object sender, EventArgs e)
+        {
+            string filePath = "";
+            // openFileDialog Todo receive.....
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+
+                ofd.Filter = "STL files(*.stl)|*.stl";
+                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                ofd.Multiselect = false;
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+
+                    filePath = ofd.FileName;
+                }
+
+            }
+
+
+            // transfer byte of stl file
+            using (port = Connection.getPort(cmbPorts.Text))
+            {
+                try
+                {
+                    port.Open();
+                    using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+                    {
+                        byte[] buffer = new byte[64];
+                      
+                        int bytesRead;
+                        while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            port.Write(buffer, 0, bytesRead);
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error" + ex.HelpLink + ex.Message.ToString());
+                }
+            }
+        }
     }
 }

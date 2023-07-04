@@ -167,10 +167,11 @@
             // 
             btnLoadStl.Location = new Point(17, 390);
             btnLoadStl.Name = "btnLoadStl";
-            btnLoadStl.Size = new Size(75, 23);
+            btnLoadStl.Size = new Size(174, 23);
             btnLoadStl.TabIndex = 4;
             btnLoadStl.Text = "Load STL";
             btnLoadStl.UseVisualStyleBackColor = true;
+            btnLoadStl.Click += btnLoadStl_Click;
             // 
             // btnSendText
             // 
@@ -230,7 +231,6 @@
             btnLoad.TabIndex = 14;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
- 
             // 
             // WinForm
             // 
