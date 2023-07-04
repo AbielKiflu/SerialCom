@@ -44,11 +44,15 @@ namespace SerialPortVirtual
             if (cmbPorts.Text.Count() > 0)
             {
                 // get the props of the port
-                port= Connection.getPort(cmbPorts.Text);
-                txtBaudRate.Text = port.BaudRate.ToString();
-                txtDataBits.Text = port.DataBits.ToString();
-                txtParity.Text = port.Parity.ToString();
-                txtStopBits.Text = port.StopBits.ToString();
+                using(port = Connection.getPort(cmbPorts.Text))
+                {
+                    txtBaudRate.Text = port.BaudRate.ToString();
+                    txtDataBits.Text = port.DataBits.ToString();
+                    txtParity.Text = port.Parity.ToString();
+                    txtStopBits.Text = port.StopBits.ToString();
+                }
+
+             
             }
         }
     }
