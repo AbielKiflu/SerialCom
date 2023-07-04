@@ -10,7 +10,7 @@ namespace SerialPortVirtual
 
         private SerialPort? port = null;
 
- 
+
 
         public WinForm()
         {
@@ -19,10 +19,10 @@ namespace SerialPortVirtual
             //Add event handler to each textbox in the pnlPort ...
             foreach (var control in PnlPort.Controls)
             {
-               if(control.GetType()==typeof(TextBox))
+                if (control.GetType() == typeof(TextBox))
                 {
-                   TextBox textBox= (TextBox)control;
-                   textBox.TextChanged += MyValidateEventHandler;
+                    TextBox textBox = (TextBox)control;
+                    textBox.TextChanged += MyValidateEventHandler;
                 }
             }
 
@@ -38,18 +38,24 @@ namespace SerialPortVirtual
             }
         }
 
+
+        // Load available ports on formLoad event
         private async void WinForm_Load(object sender, EventArgs e)
         {
             string[] ports = await LoadPorts();
             cmbPorts.DataSource = ports;
-
-
-
-
-
+            
         }
 
 
+        //Serial port message received 
+        private void OnMessageReceived(object sender, EventArgs e)
+        {
+            MessageBox.Show("Data rec");
+        }
+
+
+        //Check if Port config textbox not empty
         private void cmbPorts_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(cmbPorts.Text))
@@ -61,10 +67,13 @@ namespace SerialPortVirtual
                     txtDataBits.Text = port.DataBits.ToString();
                     txtParity.Text = port.Parity.ToString();
                     txtStopBits.Text = port.StopBits.ToString();
+                    port.DataReceived+= OnMessageReceived;
                 }
             }
         }
 
+
+        //Modify Port Config
         private void btnSavePortConf_Click(object sender, EventArgs e)
         {
             using (port = Connection.getPort(cmbPorts.Text))
@@ -85,15 +94,21 @@ namespace SerialPortVirtual
                     MessageBox.Show("Error changing the configration" + ex.Message.ToString());
                 }
 
-
-
             }
-
-
 
         }
 
 
+        //Send Text Message
+        private void btnSendText_Click(object sender, EventArgs e)
+        {
+            using (port = Connection.getPort(cmbPorts.Text))
+            {
+                if (!port.IsOpen) port.Open();
+
+                port.WriteLine(txtMessage.Text);
+            }
+        }
 
 
 
@@ -106,7 +121,6 @@ namespace SerialPortVirtual
             string[] ports = await Task.Run(() => SerialPort.GetPortNames());
             return ports;
         }
-
 
     }
 }

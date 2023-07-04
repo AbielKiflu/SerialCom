@@ -41,6 +41,9 @@
             label2 = new Label();
             txtBaudRate = new TextBox();
             btnLoadStl = new Button();
+            btnSendText = new Button();
+            txtMessage = new TextBox();
+            label6 = new Label();
             PnlPort.SuspendLayout();
             SuspendLayout();
             // 
@@ -165,11 +168,40 @@
             btnLoadStl.Text = "Load STL";
             btnLoadStl.UseVisualStyleBackColor = true;
             // 
+            // btnSendText
+            // 
+            btnSendText.Location = new Point(568, 216);
+            btnSendText.Name = "btnSendText";
+            btnSendText.Size = new Size(75, 23);
+            btnSendText.TabIndex = 5;
+            btnSendText.Text = "Send Text";
+            btnSendText.UseVisualStyleBackColor = true;
+            btnSendText.Click += btnSendText_Click;
+            // 
+            // txtMessage
+            // 
+            txtMessage.Location = new Point(568, 187);
+            txtMessage.Name = "txtMessage";
+            txtMessage.Size = new Size(192, 23);
+            txtMessage.TabIndex = 6;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(568, 169);
+            label6.Name = "label6";
+            label6.Size = new Size(53, 15);
+            label6.TabIndex = 10;
+            label6.Text = "Message";
+            // 
             // WinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 631);
+            Controls.Add(label6);
+            Controls.Add(txtMessage);
+            Controls.Add(btnSendText);
             Controls.Add(btnLoadStl);
             Controls.Add(PnlPort);
             Name = "WinForm";
@@ -178,6 +210,7 @@
             PnlPort.ResumeLayout(false);
             PnlPort.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -195,5 +228,8 @@
         private Label label5;
         private TextBox txtStopBits;
         private Button btnSavePortConf;
+        private Button btnSendText;
+        private TextBox txtMessage;
+        private Label label6;
     }
 }
