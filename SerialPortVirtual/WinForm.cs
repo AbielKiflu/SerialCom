@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.IO.Ports;
+ 
+
+
 
 namespace SerialPortVirtual
 {
     public partial class WinForm : Form
     {
+
+        SerialPort port = null;
         public WinForm()
         {
             InitializeComponent();
@@ -20,15 +16,8 @@ namespace SerialPortVirtual
 
         private async void WinForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                string[] ports = await LoadPorts();
-                cmbPorts.DataSource = ports;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error while loading ports");
-            }
+            string[] ports = await LoadPorts();
+            cmbPorts.DataSource = ports;
 
 
         }
@@ -43,7 +32,24 @@ namespace SerialPortVirtual
             return ports;
         }
 
+        private void btnLoadStl_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void cmbPorts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
+            if (cmbPorts.Text.Count() > 0)
+            {
+                // get the props of the port
+                port= Connection.getPort(cmbPorts.Text);
+                txtBaudRate.Text = port.BaudRate.ToString();
+                txtDataBits.Text = port.DataBits.ToString();
+                txtParity.Text = port.Parity.ToString();
+                txtStopBits.Text = port.StopBits.ToString();
+            }
+        }
     }
 }

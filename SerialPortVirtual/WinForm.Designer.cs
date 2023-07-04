@@ -31,21 +31,31 @@
             cmbPorts = new ComboBox();
             label1 = new Label();
             PnlPort = new Panel();
+            btnLoadStl = new Button();
+            txtBaudRate = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
+            txtParity = new TextBox();
+            label4 = new Label();
+            txtDataBits = new TextBox();
+            label5 = new Label();
+            txtStopBits = new TextBox();
             PnlPort.SuspendLayout();
             SuspendLayout();
             // 
             // cmbPorts
             // 
             cmbPorts.FormattingEnabled = true;
-            cmbPorts.Location = new Point(67, 39);
+            cmbPorts.Location = new Point(93, 12);
             cmbPorts.Name = "cmbPorts";
-            cmbPorts.Size = new Size(121, 23);
+            cmbPorts.Size = new Size(172, 23);
             cmbPorts.TabIndex = 0;
+            cmbPorts.SelectedIndexChanged += cmbPorts_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 47);
+            label1.Location = new Point(4, 20);
             label1.Name = "label1";
             label1.Size = new Size(34, 15);
             label1.TabIndex = 1;
@@ -55,6 +65,14 @@
             // 
             PnlPort.BackColor = Color.WhiteSmoke;
             PnlPort.BorderStyle = BorderStyle.FixedSingle;
+            PnlPort.Controls.Add(label5);
+            PnlPort.Controls.Add(txtStopBits);
+            PnlPort.Controls.Add(label4);
+            PnlPort.Controls.Add(txtDataBits);
+            PnlPort.Controls.Add(label3);
+            PnlPort.Controls.Add(txtParity);
+            PnlPort.Controls.Add(label2);
+            PnlPort.Controls.Add(txtBaudRate);
             PnlPort.Controls.Add(cmbPorts);
             PnlPort.Controls.Add(label1);
             PnlPort.Location = new Point(12, 12);
@@ -62,11 +80,86 @@
             PnlPort.Size = new Size(318, 179);
             PnlPort.TabIndex = 2;
             // 
+            // btnLoadStl
+            // 
+            btnLoadStl.Location = new Point(12, 254);
+            btnLoadStl.Name = "btnLoadStl";
+            btnLoadStl.Size = new Size(75, 23);
+            btnLoadStl.TabIndex = 4;
+            btnLoadStl.Text = "Load STL";
+            btnLoadStl.UseVisualStyleBackColor = true;
+            btnLoadStl.Click += btnLoadStl_Click;
+            // 
+            // txtBaudRate
+            // 
+            txtBaudRate.Location = new Point(93, 44);
+            txtBaudRate.Name = "txtBaudRate";
+            txtBaudRate.Size = new Size(172, 23);
+            txtBaudRate.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(4, 52);
+            label2.Name = "label2";
+            label2.Size = new Size(60, 15);
+            label2.TabIndex = 3;
+            label2.Text = "BaudRate ";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(4, 81);
+            label3.Name = "label3";
+            label3.Size = new Size(40, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Parity ";
+            // 
+            // txtParity
+            // 
+            txtParity.Location = new Point(93, 73);
+            txtParity.Name = "txtParity";
+            txtParity.Size = new Size(172, 23);
+            txtParity.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(4, 110);
+            label4.Name = "label4";
+            label4.Size = new Size(53, 15);
+            label4.TabIndex = 7;
+            label4.Text = "DataBits ";
+            // 
+            // txtDataBits
+            // 
+            txtDataBits.Location = new Point(93, 102);
+            txtDataBits.Name = "txtDataBits";
+            txtDataBits.Size = new Size(172, 23);
+            txtDataBits.TabIndex = 6;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(4, 139);
+            label5.Name = "label5";
+            label5.Size = new Size(53, 15);
+            label5.TabIndex = 9;
+            label5.Text = "StopBits ";
+            // 
+            // txtStopBits
+            // 
+            txtStopBits.Location = new Point(93, 131);
+            txtStopBits.Name = "txtStopBits";
+            txtStopBits.Size = new Size(172, 23);
+            txtStopBits.TabIndex = 8;
+            // 
             // WinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 631);
+            Controls.Add(btnLoadStl);
             Controls.Add(PnlPort);
             Name = "WinForm";
             Text = "WinForm";
@@ -81,5 +174,14 @@
         private ComboBox cmbPorts;
         private Label label1;
         private Panel PnlPort;
+        private Button btnLoadStl;
+        private Label label4;
+        private TextBox txtDataBits;
+        private Label label3;
+        private TextBox txtParity;
+        private Label label2;
+        private TextBox txtBaudRate;
+        private Label label5;
+        private TextBox txtStopBits;
     }
 }
