@@ -10,15 +10,43 @@ namespace SerialPortVirtual
 
         private SerialPort? port = null;
 
+ 
+
         public WinForm()
         {
             InitializeComponent();
+
+            //Add event handler to each textbox in the pnlPort ...
+            foreach (var control in PnlPort.Controls)
+            {
+               if(control.GetType()==typeof(TextBox))
+                {
+                   TextBox textBox= (TextBox)control;
+                   textBox.TextChanged += MyValidateEventHandler;
+                }
+            }
+
+        }
+
+        private void MyValidateEventHandler(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            // Simple validation TODO validate values types
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                btnSavePortConf.Enabled = false;
+            }
         }
 
         private async void WinForm_Load(object sender, EventArgs e)
         {
             string[] ports = await LoadPorts();
             cmbPorts.DataSource = ports;
+
+
+
+
+
         }
 
 
@@ -49,18 +77,19 @@ namespace SerialPortVirtual
                         port.Open();
                         port.BaudRate = int.Parse(txtBaudRate.Text);
                         //port.Parity = txtParity.Text;
-                        
+
                     }
-                }catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error changing the configration" + ex.Message.ToString());
                 }
 
-                
+
 
             }
 
-       
+
 
         }
 

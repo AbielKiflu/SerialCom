@@ -31,6 +31,7 @@
             cmbPorts = new ComboBox();
             label1 = new Label();
             PnlPort = new Panel();
+            btnSavePortConf = new Button();
             label5 = new Label();
             txtStopBits = new TextBox();
             label4 = new Label();
@@ -40,7 +41,6 @@
             label2 = new Label();
             txtBaudRate = new TextBox();
             btnLoadStl = new Button();
-            btnSavePortConf = new Button();
             PnlPort.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,6 +81,16 @@
             PnlPort.Name = "PnlPort";
             PnlPort.Size = new Size(318, 227);
             PnlPort.TabIndex = 2;
+            // 
+            // btnSavePortConf
+            // 
+            btnSavePortConf.Location = new Point(224, 185);
+            btnSavePortConf.Name = "btnSavePortConf";
+            btnSavePortConf.Size = new Size(75, 23);
+            btnSavePortConf.TabIndex = 5;
+            btnSavePortConf.Text = "Update";
+            btnSavePortConf.UseVisualStyleBackColor = true;
+            btnSavePortConf.Click += btnSavePortConf_Click;
             // 
             // label5
             // 
@@ -148,22 +158,12 @@
             // 
             // btnLoadStl
             // 
-            btnLoadStl.Location = new Point(17, 313);
+            btnLoadStl.Location = new Point(17, 390);
             btnLoadStl.Name = "btnLoadStl";
             btnLoadStl.Size = new Size(75, 23);
             btnLoadStl.TabIndex = 4;
             btnLoadStl.Text = "Load STL";
             btnLoadStl.UseVisualStyleBackColor = true;
-            // 
-            // btnSavePortConf
-            // 
-            btnSavePortConf.Location = new Point(224, 185);
-            btnSavePortConf.Name = "btnSavePortConf";
-            btnSavePortConf.Size = new Size(75, 23);
-            btnSavePortConf.TabIndex = 5;
-            btnSavePortConf.Text = "Update";
-            btnSavePortConf.UseVisualStyleBackColor = true;
-            btnSavePortConf.Click += btnSavePortConf_Click;
             // 
             // WinForm
             // 
