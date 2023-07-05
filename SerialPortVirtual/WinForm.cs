@@ -129,7 +129,7 @@ namespace SerialPortVirtual
             return ports;
         }
 
-        private void btnLoadStl_Click(object sender, EventArgs e)
+        private async void btnLoadStl_Click(object sender, EventArgs e)
         {
             string filePath = "";
             // openFileDialog Todo receive.....
@@ -155,16 +155,18 @@ namespace SerialPortVirtual
                 try
                 {
                     port.Open();
-                    using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
-                    {
-                        byte[] buffer = new byte[64];
-
-                        int bytesRead;
-                        while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0)
+                    await Task.Run(() => {
+                        using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
                         {
-                            port.Write(buffer, 0, bytesRead);
+                            byte[] buffer = new byte[64];
+
+                            int bytesRead;
+                            while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                port.Write(buffer, 0, bytesRead);
+                            }
                         }
-                    }
+                    });
 
                 }
                 catch (Exception ex)
@@ -197,5 +199,7 @@ namespace SerialPortVirtual
             frm3D.filePath = filePath;
             frm3D.ShowDialog();
         }
+
+ 
     }
 }
