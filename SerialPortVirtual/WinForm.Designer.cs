@@ -47,6 +47,7 @@
             txtReceive = new TextBox();
             label7 = new Label();
             btnLoad = new Button();
+            btn3D = new Button();
             PnlPort.SuspendLayout();
             SuspendLayout();
             // 
@@ -223,13 +224,14 @@
             btnLoad.TabIndex = 14;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
+ main
             // 
             // WinForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 631);
+            Controls.Add(btn3D);
             Controls.Add(btnLoad);
             Controls.Add(label7);
             Controls.Add(txtReceive);
@@ -268,5 +270,6 @@
         private TextBox txtReceive;
         private Label label7;
         private Button btnLoad;
+        private Button btn3D;
     }
 }
