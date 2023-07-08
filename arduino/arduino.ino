@@ -14,10 +14,10 @@ void loop() {
 
     if(data =="OFF"){
       digitalWrite(13, LOW);
-      Serial.write("Hi there, it is OFF");
+      Serial.println("Hi there, it is OFF");
     }else{
        digitalWrite(13, HIGH);
-        Serial.write("Hi there, it is ON");
+        Serial.println("Hi there, it is ON");
     }
   }
 

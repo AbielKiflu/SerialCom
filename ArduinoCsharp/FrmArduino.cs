@@ -38,7 +38,8 @@ namespace ArduinoCsharp
         private void OnReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
-            string data = serialPort.ReadExisting();
+            string data = serialPort.ReadLine();
+            Console.WriteLine(data);
 
             if (txtData.InvokeRequired)
             {

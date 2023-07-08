@@ -172,7 +172,7 @@ namespace SerialPortVirtual
                 {
                     MessageBox.Show("Error" + ex.HelpLink + ex.Message.ToString());
                 }
-            }
+            }}
         }
 
  
