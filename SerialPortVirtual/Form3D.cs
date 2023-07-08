@@ -8,23 +8,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenTK;
+using OpenTK.Graphics.OpenGL;
 
 namespace SerialPortVirtual
 {
     public partial class Form3D : Form
     {
         private SceneControl openGLControl;
+        private STLModel stlModel;
+        public string filePath { get; set; }
+
         public Form3D()
         {
             InitializeComponent();
             openGLControl = new SceneControl();
             openGLControl.Dock = DockStyle.Fill;
+            openGLControl.Paint += openGLControl_Paint;
             pnlContainer.Controls.Add(openGLControl);
         }
 
-        private void Form3D_Load(object sender, EventArgs e)
+
+
+
+        private void openGLControl_Paint(object sender, PaintEventArgs e)
         {
-            this.Text = "File " + filePath + " Opened";
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.LoadIdentity();
+
+            stlModel.Load(filePath);
+            stlModel = new STLModel();
+            stlModel.Render();
+
+            openGLControl.SwapBuffers();
         }
+
+
+
+
+
+
+
+
     }
 }

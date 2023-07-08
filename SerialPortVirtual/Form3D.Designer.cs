@@ -3,7 +3,7 @@
     partial class Form3D
     {
 
-        public string filePath { get; set; }
+
 
         private System.ComponentModel.IContainer components = null;
 
@@ -48,7 +48,6 @@
             Controls.Add(pnlContainer);
             Name = "Form3D";
             Text = "Form3D";
-            Load += Form3D_Load;
             ResumeLayout(false);
         }
 

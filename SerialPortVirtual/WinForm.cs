@@ -157,7 +157,7 @@ namespace SerialPortVirtual
                     port.Open();
                     using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
                     {
-                        byte[] buffer = new byte[64];
+                        byte[] buffer = new byte[8];
 
                         int bytesRead;
                         while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0)
@@ -176,7 +176,12 @@ namespace SerialPortVirtual
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            new Form3D().ShowDialog();
+            port.Open();
+            port.WriteLine("Hi there");
+            port.Close();
+            //Form3D frm3D = new Form3D();
+            //frm3D.filePath = ""; //TODO add path or fileBrowser
+            //frm3D.ShowDialog();
         }
     }
 }
