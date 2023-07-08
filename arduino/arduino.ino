@@ -9,14 +9,18 @@ void setup() {
 
 void loop() {
  
- if(Serial.available()){
+  if(Serial.available()){
     data=Serial.readString();
 
     if(data =="OFF"){
       digitalWrite(13, LOW);
+      Serial.write("Hi there, it is OFF");
     }else{
        digitalWrite(13, HIGH);
+        Serial.write("Hi there, it is ON");
     }
- }
+  }
+
+  
 
 }

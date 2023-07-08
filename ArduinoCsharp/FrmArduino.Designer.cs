@@ -30,6 +30,7 @@
         {
             btnON = new Button();
             btnOFF = new Button();
+            txtData = new TextBox();
             SuspendLayout();
             // 
             // btnON
@@ -52,21 +53,32 @@
             btnOFF.UseVisualStyleBackColor = true;
             btnOFF.Click += btnOFF_Click;
             // 
+            // txtData
+            // 
+            txtData.Location = new Point(141, 47);
+            txtData.Name = "txtData";
+            txtData.Size = new Size(189, 23);
+            txtData.TabIndex = 2;
+            // 
             // FrmArduino
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtData);
             Controls.Add(btnOFF);
             Controls.Add(btnON);
             Name = "FrmArduino";
             Text = "FrmArduino";
+            FormClosing += FrmArduino_FormClosing;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnON;
         private Button btnOFF;
+        private TextBox txtData;
     }
 }
