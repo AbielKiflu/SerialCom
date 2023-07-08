@@ -12,7 +12,7 @@ void loop() {
  if(Serial.available()){
     data=Serial.readString();
 
-    if(data.toUpperCase()=="OFF"){
+    if(data =="OFF"){
       digitalWrite(13, LOW);
     }else{
        digitalWrite(13, HIGH);

@@ -28,7 +28,7 @@ namespace ArduinoCsharp
                 try
                 {
                     serialPort.Open();
-                    serialPort.WriteLine("ON");
+                    serialPort.Write("ON");
                     serialPort.Close();
                 }
                 catch (Exception ex)
@@ -45,7 +45,7 @@ namespace ArduinoCsharp
                 try
                 {
                     serialPort.Open();
-                    serialPort.WriteLine("OFF");
+                    serialPort.Write("OFF");
                     serialPort.Close();
                 }
                 catch (Exception ex)
@@ -55,4 +55,5 @@ namespace ArduinoCsharp
 
             }
         }
+    }
 }
