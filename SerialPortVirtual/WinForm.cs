@@ -155,8 +155,7 @@ namespace SerialPortVirtual
                 try
                 {
                     port.Open();
-                    await Task.Run(() => {
-                        using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
+ 
                         {
                             byte[] buffer = new byte[64];
 
@@ -174,30 +173,6 @@ namespace SerialPortVirtual
                     MessageBox.Show("Error" + ex.HelpLink + ex.Message.ToString());
                 }
             }
-        }
-
-        private void btn3D_Click(object sender, EventArgs e)
-        {
-            string filePath = "";
-            // openFileDialog Todo receive.....
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-
-                ofd.Filter = "STL files(*.stl)|*.stl";
-                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                ofd.Multiselect = false;
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-
-                    filePath = ofd.FileName;
-                }
-
-            }
-
-            Form3D frm3D = new Form3D();
-            frm3D.filePath = filePath;
-            frm3D.ShowDialog();
         }
 
  

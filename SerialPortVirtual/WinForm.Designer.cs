@@ -224,17 +224,7 @@
             btnLoad.TabIndex = 14;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
-       
-            // 
-            // btn3D
-            // 
-            btn3D.Location = new Point(220, 390);
-            btn3D.Name = "btn3D";
-            btn3D.Size = new Size(110, 23);
-            btn3D.TabIndex = 15;
-            btn3D.Text = "View 3D";
-            btn3D.UseVisualStyleBackColor = true;
-            btn3D.Click += btn3D_Click;
+ main
             // 
             // WinForm
             // 
